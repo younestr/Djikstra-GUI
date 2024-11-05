@@ -8,12 +8,13 @@ Dijkstra's Algorithm is a popular algorithm used for finding the shortest paths 
 
 2. **Visit Nodes**: While there are unvisited nodes:
    - Select the node with the smallest distance (the "current" node).
-   - For each neighboring node, calculate the tentative distance through the current node. The formula to update the distance to a neighbor \( \text{node}_i \) is as follows:
-     \[
-     \text{distance}(\text{node}_i) = \min(\text{distance}(\text{node}_i), \text{distance}(\text{current}) + \text{cost}(\text{current}, \text{node}_i))
-     \]
-     Here, \( \text{cost}(\text{current}, \text{node}_i) \) is the weight of the edge between the current node and \( \text{node}_i \). If this distance is shorter than the previously recorded distance, we update it.
-
+   - For each neighboring node, calculate the tentative distance through the current node. The formula to update the distance to a neighbor node, `i`, is:
+     
+     ```
+     distance(node_i) = min(distance(node_i), distance(current) + cost(current, node_i))
+     ```
+     
+     Here, `cost(current, node_i)` is the weight of the edge between the current node and `node_i`. If this distance is shorter than the previously recorded distance, we update it.
 
 3. **Mark as Visited**: Once all neighbors have been considered, mark the current node as visited. A visited node will not be checked again.
 
