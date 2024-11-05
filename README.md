@@ -19,7 +19,7 @@ Dijkstra's Algorithm is a popular algorithm used for finding the shortest paths 
 The algorithm ensures that the shortest path is found efficiently, even in graphs with many nodes.
 
 <div style="text-align: center;">
-    <img src="Dijkstra_Animation.gif" alt="Dijkstra Animation" width="600" />
+    <img src="Dijkstra_Animation.gif" alt="Dijkstra Animation" width="800" />
 </div>
 
 This animation demonstrates how Dijkstra's Algorithm works in real-time, showing the progression of node exploration and the final path calculation.
