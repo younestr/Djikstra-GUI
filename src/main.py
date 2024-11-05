@@ -8,20 +8,26 @@ class DijkstraApp:
         self.root.title("Dijkstra's Algorithm Visualization")
         self.grid_size = 10
         self.cell_size = 30
-        self.grid = Grid(root, self.grid_size, self.cell_size)
+
+        # Create the grid first and then pass button references
+        self.grid = Grid(root, None, None, self.grid_size, self.cell_size)
+
+        # Create buttons
+        self.run_button = tk.Button(root, text="Run Dijkstra", command=self.run_dijkstra)
+        self.reset_button = tk.Button(root, text="Reset", command=self.grid.reset)
+
+        # Now update the grid with the button references
+        self.grid.run_button = self.run_button
+        self.grid.reset_button = self.reset_button
 
         # Bind the canvas click event
         self.grid.canvas.bind("<Button-1>", self.grid.select_node)
-        
-        # Buttons
+
+        # Pack the buttons
         button_frame = tk.Frame(root)
         button_frame.pack(pady=10)
-        
-        run_button = tk.Button(button_frame, text="Run Dijkstra", command=self.run_dijkstra)
-        run_button.pack(side="left", padx=5)
-        
-        reset_button = tk.Button(button_frame, text="Reset", command=self.grid.reset)
-        reset_button.pack(side="left", padx=5)
+        self.run_button.pack(side="left", padx=5)
+        self.reset_button.pack(side="left", padx=5)
 
     def run_dijkstra(self):
         if not self.grid.start_node or not self.grid.end_node:
