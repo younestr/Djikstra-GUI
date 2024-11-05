@@ -20,9 +20,6 @@ class DijkstraApp:
         self.grid.run_button = self.run_button
         self.grid.reset_button = self.reset_button
 
-        # Bind the canvas click event
-        self.grid.canvas.bind("<Button-1>", self.grid.select_node)
-
         # Pack the buttons
         button_frame = tk.Frame(root)
         button_frame.pack(pady=10)
