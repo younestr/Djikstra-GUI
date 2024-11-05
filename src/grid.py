@@ -44,33 +44,33 @@ class Grid:
     def select_node(self, event):
         row, col = event.y // self.cell_size, event.x // self.cell_size
         
-        if self.start_node is None:  # Selecting start node
-            if (row, col) not in self.obstacles:  # Prevent placing start node on obstacles
+        if self.start_node is None:  # selecting start node
+            if (row, col) not in self.obstacles:  # prevent placing start node on obstacles
                 self.start_node = (row, col)
-                self.draw_grid()  # Redraw to show start node
+                self.draw_grid()  # redraw to show start node
                 self.status_label.config(text="Select end node")
-        elif self.end_node is None:  # Selecting end node
-            if (row, col) not in self.obstacles:  # Prevent placing end node on obstacles
+        elif self.end_node is None:  # selecting end node
+            if (row, col) not in self.obstacles:  # prevent placing end node on obstacles
                 self.end_node = (row, col)
-                self.draw_grid()  # Redraw to show end node
+                self.draw_grid()  # redraw to show end node
                 self.status_label.config(text="Click to place obstacles or run the algorithm")
-        else:  # Placing obstacles
+        else:  # placing obstacles
             if (row, col) != self.start_node and (row, col) != self.end_node:
                 self.obstacles.add((row, col))
-                self.draw_grid()  # Redraw to show obstacles
+                self.draw_grid()  # redraw to show obstacles
 
     def reset(self):
-        self.start_node = None      # Reset start node
-        self.end_node = None        # Reset end node
-        self.obstacles = set()      # Reset obstacles
-        self.draw_grid()            # Redraw the grid
+        self.start_node = None      # reset start node
+        self.end_node = None        # reset end node
+        self.obstacles = set()      # reset obstacles
+        self.draw_grid()            # redraw the grid
         
-        # Resetting the status label and buttons
-        self.status_label.config(text="Select start and end nodes")  # Reset status label
-        self.run_button.config(state="normal")  # Enable run button
-        self.reset_button.config(state="normal")  # Enable reset button
+        # resetting the status label and buttons
+        self.status_label.config(text="Select start and end nodes")  # reset status label
+        self.run_button.config(state="normal")  # enable run button
+        self.reset_button.config(state="normal")  # enable reset button
 
-        # Re-bind the click event for selections
+        # re-bind the click event for selections
         self.canvas.bind("<Button-1>", self.select_node)
 
     def mark_path(self, path):
@@ -78,4 +78,4 @@ class Grid:
             if (row, col) not in [self.start_node, self.end_node]:
                 self.canvas.create_rectangle(col * self.cell_size, row * self.cell_size,
                                               (col + 1) * self.cell_size, (row + 1) * self.cell_size,
-                                              fill="blue", outline="gray")  # Draw the path
+                                              fill="blue", outline="gray")  # draw the path
